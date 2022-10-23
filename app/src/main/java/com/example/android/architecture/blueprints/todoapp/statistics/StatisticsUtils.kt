@@ -16,14 +16,16 @@
 
 package com.example.android.architecture.blueprints.todoapp.statistics
 
+import androidx.annotation.VisibleForTesting
 import com.example.android.architecture.blueprints.todoapp.data.Task
 
 /**
  * Function that does some trivial computation. Used to showcase unit tests.
  */
-internal fun getActiveAndCompletedStats(tasks: List<Task>?): StatsResult {
+@VisibleForTesting(otherwise = VisibleForTesting.PACKAGE_PRIVATE)
+fun getActiveAndCompletedStats(tasks: List<Task>?): StatsResult {
     if (tasks == null || tasks.isEmpty())
-        return StatsResult(0f,0f)
+        return StatsResult(0f, 0f)
 
     val totalTasks = tasks.size
     val numberOfActiveTasks = tasks.count { it.isActive }
